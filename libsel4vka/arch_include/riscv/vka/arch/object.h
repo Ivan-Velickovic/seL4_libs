@@ -9,7 +9,7 @@
 #include <vka/kobject_t.h>
 #include <utils/util.h>
 
-#ifdef CONFIG_RISCV_HE
+#ifdef CONFIG_RISCV_HYPERVISOR_SUPPORT
 static inline int vka_alloc_vcpu(vka_t *vka, vka_object_t *result)
 {
     return vka_alloc_object(vka, seL4_RISCV_VCPUObject, seL4_RISCV_VCPUBits, result);
@@ -40,7 +40,7 @@ vka_arch_get_object_size(seL4_Word objectType)
 #endif
     case seL4_RISCV_PageTableObject:
         return seL4_PageTableBits;
-#ifdef CONFIG_RISCV_HE
+#ifdef CONFIG_RISCV_HYPERVISOR_SUPPORT
     case seL4_RISCV_VCPUObject:
         return seL4_RISCV_VCPUBits;
 #endif
